@@ -1,4 +1,4 @@
-package com.musica.controller;
+package com.musica;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +9,7 @@ public class HomeController {
 
     @GetMapping("/musica-api")
     public ResponseEntity<String> home() {
-        return ResponseEntity.ok("¡Bienvenido a la API de Música! La aplicación está funcionando correctamente.");
+        return ResponseEntity.ok("¡Bienvenido a la API de Música!");
     }
 }
+  

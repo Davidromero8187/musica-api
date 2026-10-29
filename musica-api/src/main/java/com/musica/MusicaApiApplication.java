@@ -1,4 +1,4 @@
-package com.musica.musica_api;
+package com.musica;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
