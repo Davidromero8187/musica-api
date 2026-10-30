@@ -17,7 +17,7 @@ public class Cancion {
     private String genero;
     private Integer anio;
 
-    // Constructor vacío obligatorio por JPA
+    
     public Cancion() {}
 
     public Cancion(String titulo, String artista, String genero, Integer anio) {
@@ -27,7 +27,7 @@ public class Cancion {
         this.anio = anio;
     }
 
-    // Getters y Setters
+    
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
