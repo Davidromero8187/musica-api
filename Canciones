@@ -1,0 +1,79 @@
+package com.musica;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "canciones")
+public class Cancion {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String titulo;
+
+    private String artista;
+    private String genero;
+    private Integer anio;
+
+    
+    public Cancion() {}
+
+    public Cancion(String titulo, String artista, String genero, Integer anio) {
+        this.titulo = titulo;
+        this.artista = artista;
+        this.genero = genero;
+        this.anio = anio;
+    }
+
+    
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getTitulo() { return titulo; }
+    public void setTitulo(String titulo) { this.titulo = titulo; }
+
+    public String getArtista() { return artista; }
+    public void setArtista(String artista) { this.artista = artista; }
+
+    public String getGenero() { return genero; }
+    public void setGenero(String genero) { this.genero = genero; }
+
+    public Integer getAnio() { return anio; }
+    public void setAnio(Integer anio) { this.anio = anio; }
+}
+Como podemos ver este codigo es el encargado para la accion de la aplicacion y vemos el paso a paso de estos componentes 
+1. Anotaciones de Mapeo (JPA)
+
+    @Entity: Le indica a Hibernate/JPA que esta clase Java es una entidad y que debe ser mapeada a una tabla de la base de datos.
+
+    @Table(name = "canciones"): Especifica el nombre exacto de la tabla en la base de datos a la que estará asociada esta clase (en este caso, se llamará canciones). Si no se pone, JPA intentaría buscar una tabla llamada cancion.
+
+2. Atributos (Columnas de la tabla)
+
+Cada atributo de la clase representa una columna en la tabla canciones:
+
+    @Id y @GeneratedValue(strategy = GenerationType.IDENTITY):
+
+        Define que el campo id es la clave primaria (Primary Key) de la tabla.
+
+        GenerationType.IDENTITY indica que el valor del ID será autoincremental (generado automáticamente por la base de datos cada vez que se inserte un registro).
+
+    @Column(nullable = false):
+
+        Aplica restricciones a la columna titulo. nullable = false significa que es obligatorio (no puede ser nulo en la base de datos).
+
+    Los demás campos (artista, genero, anio) se mapean automáticamente como columnas normales en la tabla con sus tipos de datos correspondientes en SQL (VARCHAR, INT, etc.).
+
+3. Constructores
+
+    public Cancion() {}: Constructor vacío (sin argumentos). Es un requisito obligatorio de JPA/Hibernate para poder instanciar objetos de esta clase mediante reflexión cuando recupera datos de la base de datos.
+
+    public Cancion(String titulo, String artista, String genero, Integer anio): Un constructor con parámetros para facilitar la creación de nuevos objetos canción de forma rápida en tu código (sin incluir el ID, ya que lo genera la base de datos).
+
+4. Getters y Setters
+
+    Son los métodos tradicionales de encapsulamiento en Java (getId, setTitulo, etc.).
+
+    JPA y Spring Boot los utilizan internamente para leer y escribir los valores de los atributos cuando interactúan con la base de datos.
